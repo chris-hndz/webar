@@ -15,9 +15,16 @@
           max-width: 150px;
           z-index: 1000;
       }
-    </style>
 
-    <style>
+      .mindar-ui-loading {
+            flex-direction: column;
+        }
+        .loading-text {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+      
       .mindar-ui-scanning .scanning .inner {
         position: relative;
       }
@@ -27,8 +34,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        max-width: 140%;
-        max-height: 140%;
+        max-width: 85%;
+        max-height: 85%;
         z-index: 0;
         opacity: 0.50;
       }
@@ -44,8 +51,25 @@
   </head>
   <body>
     <img id="logo" src="images/JW_Logo.svg" alt="Logo">
+
+    <div id="custom-loading-overlay" class="mindar-ui-overlay mindar-ui-loading">
+      <div class="loading-text">Cargando...</div>
+      <div class="loader"></div>
+    </div>
+
+    <div id="scanning-overlay" class="mindar-ui-overlay mindar-ui-scanning">
+      <div class="mindar-ui-overlay mindar-ui-scanning">
+        <div class="scanning">
+          <div class="inner">
+            <img src="images/target.jpg" alt="Target" class="target-image">
+            <div class="scanline"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <a-scene
-      mindar-image="filterMinCF:0.0001; filterBeta: 0.001; imageTargetSrc: https://www.nexar.cl/webar/assets/target/targets.mind; uiScanning: #scanning-overlay;"
+      mindar-image="filterMinCF:0.0001; filterBeta: 0.001; imageTargetSrc: https://www.nexar.cl/webar/assets/target/targets.mind; uiScanning: #scanning-overlay; uiLoading: #custom-loading-overlay;"
       xr-mode-ui="enabled: false"
       device-orientation-permission-ui="enabled: false"
     >
@@ -69,6 +93,7 @@
         </a-gltf-model>
       </a-entity>
     </a-scene>
+
     <script>
       function adjustLogoSize() {
           const logo = document.getElementById('logo');
@@ -90,17 +115,6 @@
       // Ajustar el tamaño del logo cuando se redimensiona la ventana
       window.addEventListener('resize', adjustLogoSize);
     </script>
-
-    <div id="scanning-overlay" class="mindar-ui-overlay mindar-ui-scanning">
-      <div class="mindar-ui-overlay mindar-ui-scanning">
-        <div class="scanning">
-          <div class="inner">
-            <img src="images/target.jpg" alt="Target" class="target-image">
-            <div class="scanline"></div>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </body>
 </html>
