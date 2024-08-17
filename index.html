@@ -4,8 +4,21 @@
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+    <style>
+      #logo {
+          position: fixed;
+          top: 10px;
+          left: 10px;
+          width: 15vw;
+          height: auto;
+          max-width: 150px;
+          z-index: 1000;
+      }
+    </style>
   </head>
   <body>
+    <img id="logo" src="images/JW_Logo.svg" alt="Logo">
     <a-scene
       mindar-image="imageTargetSrc: https://www.nexar.cl/webar/assets/target/targets.mind"
       xr-mode-ui="enabled: false"
@@ -22,7 +35,7 @@
 
       <a-entity mindar-image-target="targetIndex: 0">
         <a-gltf-model
-          rotation="75 0 0 "
+          rotation="60 0 0 "
           position="0 0 0"
           scale="0.05 0.05 0.05"
           src="#model1"
@@ -31,5 +44,26 @@
         </a-gltf-model>
       </a-entity>
     </a-scene>
+    <script>
+      function adjustLogoSize() {
+          const logo = document.getElementById('logo');
+          if (window.innerWidth < window.innerHeight) {
+              // Pantalla vertical
+              logo.style.width = '15vw';
+              logo.style.height = 'auto';
+          } else {
+              // Pantalla horizontal
+              logo.style.width = '15vw';
+              logo.style.height = 'auto';
+              logo.style.maxHeight = '15vh';
+          }
+      }
+  
+      // Ajustar el tamaño del logo cuando se carga la página
+      window.addEventListener('load', adjustLogoSize);
+  
+      // Ajustar el tamaño del logo cuando se redimensiona la ventana
+      window.addEventListener('resize', adjustLogoSize);
+    </script>
   </body>
 </html>
