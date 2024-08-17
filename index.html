@@ -16,11 +16,36 @@
           z-index: 1000;
       }
     </style>
+
+    <style>
+      .mindar-ui-scanning .scanning .inner {
+        position: relative;
+      }
+      
+      .mindar-ui-scanning .scanning .inner .target-image {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 140%;
+        max-height: 140%;
+        z-index: 0;
+        opacity: 0.50;
+      }
+    
+      .mindar-ui-scanning .scanning .inner .scanline,
+      .mindar-ui-scanning .scanning .inner::before,
+      .mindar-ui-scanning .scanning .inner::after {
+        z-index: 2;
+        position: relative;
+      }
+    </style>
+
   </head>
   <body>
     <img id="logo" src="images/JW_Logo.svg" alt="Logo">
     <a-scene
-      mindar-image="filterMinCF:0.0001; filterBeta: 0.001; imageTargetSrc: https://www.nexar.cl/webar/assets/target/targets.mind"
+      mindar-image="filterMinCF:0.0001; filterBeta: 0.001; imageTargetSrc: https://www.nexar.cl/webar/assets/target/targets.mind; uiScanning: #scanning-overlay;"
       xr-mode-ui="enabled: false"
       device-orientation-permission-ui="enabled: false"
     >
@@ -65,5 +90,17 @@
       // Ajustar el tamaño del logo cuando se redimensiona la ventana
       window.addEventListener('resize', adjustLogoSize);
     </script>
+
+    <div id="scanning-overlay" class="mindar-ui-overlay mindar-ui-scanning">
+      <div class="mindar-ui-overlay mindar-ui-scanning">
+        <div class="scanning">
+          <div class="inner">
+            <img src="images/target.jpg" alt="Target" class="target-image">
+            <div class="scanline"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>
