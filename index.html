@@ -13,9 +13,8 @@
         position: fixed;
         top: 10px;
         left: 10px;
-        width: 30vw;
-        height: auto;
-        max-width: 300px;
+        max-width: 25%;
+			  max-height: 25%;
         z-index: 1000;
       }
 
@@ -101,14 +100,13 @@
       function adjustLogoSize() {
           const logo = document.getElementById('logo');
           if (window.innerWidth < window.innerHeight) {
-              // Pantalla vertical
-              logo.style.width = '30vw';
-              logo.style.height = 'auto';
+            // Pantalla vertical
+            logo.style.width = '25vw';
+            logo.style.height = 'auto';
           } else {
-              // Pantalla horizontal
-              logo.style.width = '20vw';
-              logo.style.height = 'auto';
-              logo.style.maxHeight = '20vh';
+            // Pantalla horizontal
+            logo.style.width = 'auto';
+            logo.style.height = '25vh';
           }
       }
   
