@@ -74,14 +74,24 @@
     </div>
 
     <a-scene
-      mindar-image="filterMinCF:0.0001; filterBeta: 0.001; imageTargetSrc: https://www.nexar.cl/webar/assets/target/targets.mind; uiScanning: #scanning-overlay; uiLoading: #custom-loading-overlay;"
+      mindar-image="maxTrack: 2; filterMinCF:0.0001; filterBeta: 0.001; imageTargetSrc: https://www.nexar.cl/demos/webar/assets/target/targets_v3.mind; uiScanning: #scanning-overlay; uiLoading: #custom-loading-overlay;"
       xr-mode-ui="enabled: false"
       device-orientation-permission-ui="enabled: false"
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
     >
       <a-assets>
         <a-asset-item
+          id="model0"
+          src="https://www.nexar.cl/demos/webar/assets/3d/VolcanLlaima_LagoConguillio_V03_CON.glb"
+        ></a-asset-item>
+        <a-asset-item
           id="model1"
-          src="https://www.nexar.cl/webar/assets/3d/scene.gltf"
+          src="https://www.nexar.cl/demos/webar/assets/3d/ARAUCARIA_V06_CON.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="model2"
+          src="https://www.nexar.cl/demos/webar/assets/3d/Carpintero_Negro_V04_CON.glb"
         ></a-asset-item>
       </a-assets>
 
@@ -89,10 +99,30 @@
 
       <a-entity mindar-image-target="targetIndex: 0">
         <a-gltf-model
-          rotation="60 0 0 "
+          rotation="-135 90 90"
           position="0 0 0"
-          scale="0.05 0.05 0.05"
+          scale="0.5 0.5 0.5"
+          src="#model0"
+          animation-mixer
+        >
+        </a-gltf-model>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 1">
+        <a-gltf-model
+          rotation="90 90 90"
+          position="0 0 0"
+          scale="0.1 0.1 0.1"
           src="#model1"
+          animation-mixer
+        >
+        </a-gltf-model>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 2">
+        <a-gltf-model
+          rotation="-90 90 90"
+          position="0 0 0"
+          scale="0.7 0.7 0.7"
+          src="#model2"
           animation-mixer
         >
         </a-gltf-model>
