@@ -74,7 +74,7 @@
     </div>
 
     <a-scene
-      mindar-image="maxTrack: 2; filterMinCF:0.0001; filterBeta: 0.001; imageTargetSrc: https://www.nexar.cl/demos/webar/assets/target/targets_v3.mind; uiScanning: #scanning-overlay; uiLoading: #custom-loading-overlay;"
+      mindar-image="maxTrack: 1; filterMinCF:0.0001; filterBeta: 0.001; imageTargetSrc: https://www.nexar.cl/demos/webar/assets/target/targets_v4.mind; uiScanning: #scanning-overlay; uiLoading: #custom-loading-overlay;"
       xr-mode-ui="enabled: false"
       device-orientation-permission-ui="enabled: false"
       color-space="sRGB"
@@ -93,6 +93,10 @@
           id="model2"
           src="https://www.nexar.cl/demos/webar/assets/3d/Carpintero_Negro_V04_CON.glb"
         ></a-asset-item>
+        <a-asset-item
+          id="model3"
+          src="https://www.nexar.cl/demos/webar/assets/3d/Monito_Del_Monte_V01.glb"
+        ></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -109,8 +113,8 @@
       </a-entity>
       <a-entity mindar-image-target="targetIndex: 1">
         <a-gltf-model
-          rotation="90 90 90"
-          position="0 0 0"
+          rotation="0 0 0"
+          position="0 -0.7 0"
           scale="0.1 0.1 0.1"
           src="#model1"
           animation-mixer
@@ -123,6 +127,16 @@
           position="0 0 0"
           scale="0.7 0.7 0.7"
           src="#model2"
+          animation-mixer
+        >
+        </a-gltf-model>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 3">
+        <a-gltf-model
+          rotation="0 90 45"
+          position="0.25 0 0"
+          scale="1 1 1"
+          src="#model3"
           animation-mixer
         >
         </a-gltf-model>
