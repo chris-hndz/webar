@@ -74,11 +74,12 @@
     </div>
 
     <a-scene
-      mindar-image="maxTrack: 1; filterMinCF:0.0001; filterBeta: 0.001; imageTargetSrc: https://www.nexar.cl/demos/webar/assets/target/targets_v4.mind; uiScanning: #scanning-overlay; uiLoading: #custom-loading-overlay;"
+      mindar-image="maxTrack: 1; filterMinCF:0.0001; filterBeta: 0.001; imageTargetSrc: https://www.nexar.cl/demos/webar/assets/target/targets_v5.mind; uiScanning: #scanning-overlay; uiLoading: #custom-loading-overlay;"
       xr-mode-ui="enabled: false"
       device-orientation-permission-ui="enabled: false"
       color-space="sRGB"
       renderer="colorManagement: true, physicallyCorrectLights"
+      loading-screen="enabled: false"
     >
       <a-assets>
         <a-asset-item
@@ -87,7 +88,7 @@
         ></a-asset-item>
         <a-asset-item
           id="model1"
-          src="https://www.nexar.cl/demos/webar/assets/3d/ARAUCARIA_V07_CON.glb"
+          src="https://www.nexar.cl/demos/webar/assets/3d/ARAUCARIA_V08_CON.glb"
         ></a-asset-item>
         <a-asset-item
           id="model2"
@@ -105,7 +106,7 @@
         <a-gltf-model
           rotation="-135 90 90"
           position="0 0 0"
-          scale="0.5 0.5 0.5"
+          scale="0.75 0.75 0.75"
           src="#model0"
           animation-mixer
         >
