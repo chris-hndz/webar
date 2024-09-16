@@ -117,6 +117,14 @@
           id="model4"
           src="https://www.nexar.cl/demos/webar/assets/3d/PUMA_V04.glb"
         ></a-asset-item>
+        <a-asset-item
+          id="model5"
+          src="https://www.nexar.cl/demos/webar/assets/3d/Guina.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="model6"
+          src="https://www.nexar.cl/demos/webar/assets/3d/SaltoTrufulTruful.glb"
+        ></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -171,6 +179,26 @@
         >
         </a-gltf-model>
       </a-entity>
+      <a-entity id="target5" mindar-image-target="targetIndex: 5">
+        <a-gltf-model
+          rotation="0 0 0"
+          position="0 0 0"
+          scale="1 1 1"
+          src="#model5"
+          animation-mixer
+        >
+        </a-gltf-model>
+      </a-entity>
+      <a-entity id="target6" mindar-image-target="targetIndex: 6">
+        <a-gltf-model
+          rotation="0 0 0"
+          position="0 0 0"
+          scale="1 1 1"
+          src="#model6"
+          animation-mixer
+        >
+        </a-gltf-model>
+      </a-entity>
     </a-scene>
 
     <script>
@@ -199,7 +227,9 @@
             target1: "Araucaria",
             target2: "Carpintero negro",
             target3: "Monito del monte",
-            target4: "Puma"
+            target4: "Puma",
+            target5: "Güiña",
+            target6: "Salto Truful Truful"
         };
 
         function showTargetName(name) {
