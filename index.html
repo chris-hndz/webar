@@ -20,6 +20,19 @@
 			  max-height: 25%;
         z-index: 1000;
       }
+      #target-name {
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+        display: none;
+        z-index: 999; /* Asegura que esté por encima del modelo 3D */
+      }
 
       .mindar-ui-loading {
         flex-direction: column;
@@ -73,6 +86,8 @@
       </div>
     </div>
 
+    <div id="target-name"></div>
+
     <a-scene
       mindar-image="maxTrack: 1; filterMinCF:0.0001; filterBeta: 0.001; imageTargetSrc: https://www.nexar.cl/demos/webar/assets/target/targets_v5.mind; uiScanning: #scanning-overlay; uiLoading: #custom-loading-overlay;"
       xr-mode-ui="enabled: false"
@@ -102,7 +117,7 @@
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-      <a-entity mindar-image-target="targetIndex: 0">
+      <a-entity id="target0" mindar-image-target="targetIndex: 0">
         <a-gltf-model
           rotation="-135 90 90"
           position="0 0 0"
@@ -112,7 +127,7 @@
         >
         </a-gltf-model>
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 1">
+      <a-entity id="target1" mindar-image-target="targetIndex: 1">
         <a-gltf-model
           rotation="0 0 0"
           position="0 -0.7 0"
@@ -122,7 +137,7 @@
         >
         </a-gltf-model>
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 2">
+      <a-entity id="target2" mindar-image-target="targetIndex: 2">
         <a-gltf-model
           rotation="-90 90 90"
           position="0 0 0"
@@ -132,7 +147,7 @@
         >
         </a-gltf-model>
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 3">
+      <a-entity id="target3" mindar-image-target="targetIndex: 3">
         <a-gltf-model
           rotation="0 90 45"
           position="0.25 0 0"
@@ -163,6 +178,35 @@
   
       // Ajustar el tamaño del logo cuando se redimensiona la ventana
       window.addEventListener('resize', adjustLogoSize);
+
+      const targetNameElement = document.getElementById('target-name');
+        const targets = {
+            target0: "Parque Nacional Conguillío",
+            target1: "Araucaria",
+            target2: "Carpintero negro",
+            target3: "Monito del monte"
+        };
+
+        function showTargetName(name) {
+            targetNameElement.textContent = name;
+            targetNameElement.style.display = 'block';
+        }
+
+        function hideTargetName() {
+            targetNameElement.style.display = 'none';
+        }
+
+        Object.keys(targets).forEach(targetId => {
+            const target = document.getElementById(targetId);
+            
+            target.addEventListener("targetFound", event => {
+                showTargetName(targets[targetId]);
+            });
+
+            target.addEventListener("targetLost", event => {
+                hideTargetName();
+            });
+        });
     </script>
 
   </body>
